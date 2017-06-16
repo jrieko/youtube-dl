@@ -38,8 +38,8 @@ class MetadataFromTitlePP(PostProcessor):
             self._downloader.to_screen('[fromtitle] Could not interpret title of video as "%s"' % self._titleformat)
             return [], info
         for attribute, value in match.groupdict().items():
-            value = match.group(attribute)
-            info[attribute] = value
-            self._downloader.to_screen('[fromtitle] parsed ' + attribute + ': ' + value)
+            if value:
+              info[attribute] = value
+              self._downloader.to_screen('[fromtitle] parsed ' + attribute + ': ' + value)
 
         return [], info
